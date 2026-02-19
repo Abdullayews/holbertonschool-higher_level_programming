@@ -4,6 +4,8 @@ Module for matrix_divided function.
 This module provides a function to divide matrix elements.
 It validates matrix structure and divisor.
 """
+
+
 def matrix_divided(matrix, div):
     """
     Divide all elements of a matrix.
