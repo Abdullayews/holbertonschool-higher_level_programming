@@ -1,0 +1,76 @@
+===========================
+Tests for lazy_matrix_mul module
+===========================
+
+Import the function:
+    >>> lazy_matrix_mul = __import__('101-lazy_matrix_mul').lazy_matrix_mul
+
+--- Normal cases ---
+
+Square matrices:
+    >>> lazy_matrix_mul([[1, 2], [3, 4]], [[1, 2], [3, 4]])
+    array([[ 7, 10],
+           [15, 22]])
+
+Rectangular matrices:
+    >>> lazy_matrix_mul([[1, 2]], [[3, 4], [5, 6]])
+    array([[13, 16]])
+
+Single element:
+    >>> lazy_matrix_mul([[3]], [[4]])
+    array([[12]])
+
+With floats:
+    >>> lazy_matrix_mul([[1.5, 2.5]], [[1, 0], [0, 1]])
+    array([[1.5, 2.5]])
+
+Identity matrix:
+    >>> lazy_matrix_mul([[1, 0], [0, 1]], [[5, 6], [7, 8]])
+    array([[5, 6],
+           [7, 8]])
+
+--- ValueError cases ---
+
+m_a is empty:
+    >>> lazy_matrix_mul([], [[1, 2]])
+    Traceback (most recent call last):
+    ValueError: matmul: Input operand 0 does not have enough dimensions (has 0, gufunc core with signature (n?,k),(k,m?)->(n?,m?) requires 1)
+
+m_b is empty:
+    >>> lazy_matrix_mul([[1, 2]], [])
+    Traceback (most recent call last):
+    ValueError: matmul: Input operand 1 does not have enough dimensions (has 0, gufunc core with signature (n?,k),(k,m?)->(n?,m?) requires 1)
+
+Incompatible sizes:
+    >>> lazy_matrix_mul([[1, 2], [3, 4]], [[1, 2, 3]])
+    Traceback (most recent call last):
+    ValueError: matmul: Input operand 1 has a mismatch in its core dimension 0, with gufunc signature (n?,k),(k,m?)->(n?,m?) (size 1 doesn't match 2)
+
+--- TypeError cases ---
+
+m_a is not a list:
+    >>> lazy_matrix_mul("hello", [[1, 2]])
+    Traceback (most recent call last):
+    TypeError: matmul: Input operand 0 does not support __index__, was coerced to a float, or was converted to a scalar incorrectly.
+
+m_b is not a list:
+    >>> lazy_matrix_mul([[1, 2]], "hello")
+    Traceback (most recent call last):
+    TypeError: matmul: Input operand 1 does not support __index__, was coerced to a float, or was converted to a scalar incorrectly.
+
+m_a contains strings:
+    >>> lazy_matrix_mul([[1, "two"]], [[1], [2]])
+    Traceback (most recent call last):
+    TypeError: matmul: Input operand 0 does not support __index__, was coerced to a float, or was converted to a scalar incorrectly.
+
+--- Missing arguments ---
+
+No arguments:
+    >>> lazy_matrix_mul()
+    Traceback (most recent call last):
+    TypeError: lazy_matrix_mul() missing 2 required positional arguments: 'm_a' and 'm_b'
+
+One argument:
+    >>> lazy_matrix_mul([[1, 2]])
+    Traceback (most recent call last):
+    TypeError: lazy_matrix_mul() missing 1 required positional argument: 'm_b'
