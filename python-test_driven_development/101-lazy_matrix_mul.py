@@ -30,4 +30,14 @@ def lazy_matrix_mul(m_a, m_b):
                 "shapes ({},{}) and ({},{}) not aligned: {} (dim 1) != {} (dim 0)"
                 .format(rows_a, cols_a, rows_b, cols_b, cols_a, rows_b))
 
+    for row in m_a:
+        if isinstance(row, list):
+            if not all(isinstance(n, (int, float)) for n in row):
+                raise TypeError("invalid data type for einsum")
+
+    for row in m_b:
+        if isinstance(row, list):
+            if not all(isinstance(n, (int, float)) for n in row):
+                raise TypeError("invalid data type for einsum")
+
     return np.matmul(m_a, m_b)
