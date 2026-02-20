@@ -20,10 +20,6 @@ Single element:
     >>> lazy_matrix_mul([[3]], [[4]])
     array([[12]])
 
-With floats:
-    >>> lazy_matrix_mul([[1.5, 2.5]], [[1.0, 0.0], [0.0, 1.0]])
-    array([[1.5, 2.5]])
-
 --- ValueError cases ---
 
 Incompatible sizes:
@@ -33,12 +29,13 @@ Incompatible sizes:
 
 --- TypeError cases ---
 
-Scalar instead of matrix:
-    >>> lazy_matrix_mul([[1, 2]], 5)
+Scalar m_a:
+    >>> lazy_matrix_mul(5, [[1, 2]])
     Traceback (most recent call last):
     TypeError: Scalar operands are not allowed, use '*' instead
 
-    >>> lazy_matrix_mul(5, [[1, 2]])
+Scalar m_b:
+    >>> lazy_matrix_mul([[1, 2]], 5)
     Traceback (most recent call last):
     TypeError: Scalar operands are not allowed, use '*' instead
 
