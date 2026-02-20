@@ -40,4 +40,10 @@ def lazy_matrix_mul(m_a, m_b):
             if not all(isinstance(n, (int, float)) for n in row):
                 raise TypeError("invalid data type for einsum")
 
+    if len(set(len(row) for row in m_a if isinstance(row, list))) > 1:
+        raise ValueError("setting an array element with a sequence.")
+
+    if len(set(len(row) for row in m_b if isinstance(row, list))) > 1:
+        raise ValueError("setting an array element with a sequence.")
+
     return np.matmul(m_a, m_b)
