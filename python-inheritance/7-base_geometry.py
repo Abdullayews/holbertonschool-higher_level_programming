@@ -16,14 +16,18 @@ class BaseGeometry:
         """
         raise Exception("area() is not implemented")
 
-    def integer_validator(self, name, value):
+    def integer_validator(self, name, value=0):
         """Validate that value is a positive integer.
 
         Args:
             name (str): The name of the parameter.
-            value (int): The value to validate.
+            value (int): The value to validate. Defaults to 0.
 
         >>> bg = BaseGeometry()
+        >>> bg.integer_validator("age")
+        Traceback (most recent call last):
+        ...
+        ValueError: age must be greater than 0
         >>> bg.integer_validator("age", 1)
         >>> bg.integer_validator("age", 0)
         Traceback (most recent call last):
