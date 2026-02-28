@@ -111,6 +111,12 @@ Age with tuple:
     ...
     TypeError: age must be an integer
 
+Age with set:
+    >>> bg.integer_validator("age", {3, 4})
+    Traceback (most recent call last):
+    ...
+    TypeError: age must be an integer
+
 --- integer_validator(): ValueError ---
 
 Zero value:
