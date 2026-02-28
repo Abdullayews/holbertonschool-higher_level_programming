@@ -22,6 +22,9 @@ Valid integer:
 Valid integer:
     >>> bg.integer_validator("width", 89)
 
+Valid integer:
+    >>> bg.integer_validator("age", 1)
+
 --- integer_validator(): TypeError ---
 
 String value:
@@ -75,7 +78,25 @@ Zero value:
     ValueError: age must be greater than 0
 
 Negative value:
+    >>> bg.integer_validator("age", -4)
+    Traceback (most recent call last):
+    ...
+    ValueError: age must be greater than 0
+
+Negative value with different name:
     >>> bg.integer_validator("distance", -4)
     Traceback (most recent call last):
     ...
     ValueError: distance must be greater than 0
+
+Age with string:
+    >>> bg.integer_validator("age", "4")
+    Traceback (most recent call last):
+    ...
+    TypeError: age must be an integer
+
+Age with float:
+    >>> bg.integer_validator("age", 3.14)
+    Traceback (most recent call last):
+    ...
+    TypeError: age must be an integer
