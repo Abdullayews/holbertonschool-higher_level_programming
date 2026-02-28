@@ -16,102 +16,102 @@ area() raises Exception:
 
 --- integer_validator(): valid values ---
 
-Valid integer:
+Valid integer my_int:
     >>> bg.integer_validator("my_int", 12)
 
-Valid integer:
+Valid integer width:
     >>> bg.integer_validator("width", 89)
 
-Valid age integer:
+Valid age 1:
     >>> bg.integer_validator("age", 1)
 
-Valid age integer:
+Valid age 25:
     >>> bg.integer_validator("age", 25)
 
-Valid age integer:
+Valid age 100:
     >>> bg.integer_validator("age", 100)
 
 --- integer_validator(): TypeError ---
 
-String value:
+String name:
     >>> bg.integer_validator("name", "John")
     Traceback (most recent call last):
     ...
     TypeError: name must be an integer
 
-Float value:
+Float name:
     >>> bg.integer_validator("name", 3.14)
     Traceback (most recent call last):
     ...
     TypeError: name must be an integer
 
-None value:
+None name:
     >>> bg.integer_validator("name", None)
     Traceback (most recent call last):
     ...
     TypeError: name must be an integer
 
-Boolean value:
+Bool name:
     >>> bg.integer_validator("name", True)
     Traceback (most recent call last):
     ...
     TypeError: name must be an integer
 
-List value:
+List name:
     >>> bg.integer_validator("name", [1, 2])
     Traceback (most recent call last):
     ...
     TypeError: name must be an integer
 
-Tuple value:
+Tuple name:
     >>> bg.integer_validator("name", (1,))
     Traceback (most recent call last):
     ...
     TypeError: name must be an integer
 
-Dict value:
+Dict name:
     >>> bg.integer_validator("name", {1: 2})
     Traceback (most recent call last):
     ...
     TypeError: name must be an integer
 
-Age with string:
+Age string:
     >>> bg.integer_validator("age", "4")
     Traceback (most recent call last):
     ...
     TypeError: age must be an integer
 
-Age with float:
+Age float:
     >>> bg.integer_validator("age", 3.14)
     Traceback (most recent call last):
     ...
     TypeError: age must be an integer
 
-Age with bool:
+Age bool:
     >>> bg.integer_validator("age", True)
     Traceback (most recent call last):
     ...
     TypeError: age must be an integer
 
-Age with None:
+Age None:
     >>> bg.integer_validator("age", None)
     Traceback (most recent call last):
     ...
     TypeError: age must be an integer
 
-Age with list:
-    >>> bg.integer_validator("age", [1])
+Age list:
+    >>> bg.integer_validator("age", [3])
     Traceback (most recent call last):
     ...
     TypeError: age must be an integer
 
-Age with tuple:
-    >>> bg.integer_validator("age", (1,))
+Age tuple:
+    >>> bg.integer_validator("age", (4,))
     Traceback (most recent call last):
     ...
     TypeError: age must be an integer
 
-Age with set:
+Age set:
     >>> bg.integer_validator("age", {3, 4})
     Traceback (most recent call last):
     ...
@@ -119,19 +119,19 @@ Age with set:
 
 --- integer_validator(): ValueError ---
 
-Zero value:
+Age zero:
     >>> bg.integer_validator("age", 0)
     Traceback (most recent call last):
     ...
     ValueError: age must be greater than 0
 
-Negative age:
+Age negative:
     >>> bg.integer_validator("age", -4)
     Traceback (most recent call last):
     ...
     ValueError: age must be greater than 0
 
-Negative distance:
+Distance negative:
     >>> bg.integer_validator("distance", -4)
     Traceback (most recent call last):
     ...
