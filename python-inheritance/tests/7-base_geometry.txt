@@ -22,8 +22,14 @@ Valid integer:
 Valid integer:
     >>> bg.integer_validator("width", 89)
 
-Valid integer:
+Valid age integer:
     >>> bg.integer_validator("age", 1)
+
+Valid age integer:
+    >>> bg.integer_validator("age", 25)
+
+Valid age integer:
+    >>> bg.integer_validator("age", 100)
 
 --- integer_validator(): TypeError ---
 
@@ -69,26 +75,6 @@ Dict value:
     ...
     TypeError: name must be an integer
 
---- integer_validator(): ValueError ---
-
-Zero value:
-    >>> bg.integer_validator("age", 0)
-    Traceback (most recent call last):
-    ...
-    ValueError: age must be greater than 0
-
-Negative value:
-    >>> bg.integer_validator("age", -4)
-    Traceback (most recent call last):
-    ...
-    ValueError: age must be greater than 0
-
-Negative value with different name:
-    >>> bg.integer_validator("distance", -4)
-    Traceback (most recent call last):
-    ...
-    ValueError: distance must be greater than 0
-
 Age with string:
     >>> bg.integer_validator("age", "4")
     Traceback (most recent call last):
@@ -100,3 +86,47 @@ Age with float:
     Traceback (most recent call last):
     ...
     TypeError: age must be an integer
+
+Age with bool:
+    >>> bg.integer_validator("age", True)
+    Traceback (most recent call last):
+    ...
+    TypeError: age must be an integer
+
+Age with None:
+    >>> bg.integer_validator("age", None)
+    Traceback (most recent call last):
+    ...
+    TypeError: age must be an integer
+
+Age with list:
+    >>> bg.integer_validator("age", [1])
+    Traceback (most recent call last):
+    ...
+    TypeError: age must be an integer
+
+Age with tuple:
+    >>> bg.integer_validator("age", (1,))
+    Traceback (most recent call last):
+    ...
+    TypeError: age must be an integer
+
+--- integer_validator(): ValueError ---
+
+Zero value:
+    >>> bg.integer_validator("age", 0)
+    Traceback (most recent call last):
+    ...
+    ValueError: age must be greater than 0
+
+Negative age:
+    >>> bg.integer_validator("age", -4)
+    Traceback (most recent call last):
+    ...
+    ValueError: age must be greater than 0
+
+Negative distance:
+    >>> bg.integer_validator("distance", -4)
+    Traceback (most recent call last):
+    ...
+    ValueError: distance must be greater than 0
