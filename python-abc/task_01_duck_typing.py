@@ -27,7 +27,7 @@ class Circle(Shape):
         Args:
             radius (float): The radius of the circle.
         """
-        self.radius = radius
+        self.radius = abs(radius)
 
     def area(self):
         """Return the area of the circle."""
@@ -53,11 +53,11 @@ class Rectangle(Shape):
 
     def area(self):
         """Return the area of the rectangle."""
-        return self.width * self.height
+        return float(self.width * self.height)
 
     def perimeter(self):
         """Return the perimeter of the rectangle."""
-        return 2 * (self.width + self.height)
+        return float(2 * (self.width + self.height))
 
 
 def shape_info(shape):
