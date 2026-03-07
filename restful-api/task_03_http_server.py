@@ -33,7 +33,7 @@ class SimpleAPIHandler(BaseHTTPRequestHandler):
     def _respond(self, status_code, content_type, body):
         encoded = body.encode("utf-8")
         self.send_response(status_code)
-        self.send_header("Content-Type", f"{content_type}; charset=utf-8")
+        self.send_header("Content-Type", content_type)
         self.send_header("Content-Length", str(len(encoded)))
         self.end_headers()
         self.wfile.write(encoded)
