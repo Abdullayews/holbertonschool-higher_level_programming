@@ -13,9 +13,9 @@ if __name__ == "__main__":
         db=sys.argv[3]
     )
     cursor = db.cursor()
-    cursor.execute("SELECT * FROM states WHERE name = '{}' ORDER BY id ASC"
-                   .format(sys.argv[4]))
+    cursor.execute("SELECT * FROM states ORDER BY id ASC")
     for row in cursor.fetchall():
-        print(row)
+        if row[1] == sys.argv[4]:
+            print(row)
     cursor.close()
     db.close()
