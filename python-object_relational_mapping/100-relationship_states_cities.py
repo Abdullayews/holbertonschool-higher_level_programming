@@ -17,11 +17,11 @@ if __name__ == '__main__':
                            '{}'.format(argv[1], argv[2], argv[3]),
                            pool_pre_ping=True)
     session = Session(engine)
-    Base.metadata.create_all(engine)  # creates decprecated warning 1681
+    Base.metadata.create_all(engine)
 
     new_state = State(name='California')
-    new_city = City(name='San Francisco', state_id=new_state.id)
+    new_city = City(name='San Francisco')
     new_state.cities.append(new_city)
-    session.add_all([new_state, new_city])
+    session.add(new_state)
     session.commit()
     session.close()
